@@ -121,6 +121,11 @@ across them.
 }
 ```
 
+## Acknowledgments
+
+The release packaging of this repository (code cleanup, documentation and tests) was
+prepared with the help of Claude (Anthropic).
+
 ## License
 
 Code: [CC BY-NC-SA 4.0](LICENSE), Copyright (c) 2026 HM3D-M3 authors.
