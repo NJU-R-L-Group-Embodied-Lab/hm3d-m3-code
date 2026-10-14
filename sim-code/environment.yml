@@ -1,0 +1,54 @@
+# Conda environment for running HM3D-M3 without Docker (Linux x86_64, NVIDIA driver
+# for CUDA 11.8). Mirrors docker/Dockerfile step for step; verified with micromamba
+# 2.0.5 (conda / mamba work the same). Run from sim-code/:
+#
+#   micromamba env create -f environment.yml -p ./envs/m3     # or: conda env create -f environment.yml
+#   export PATH=$PWD/envs/m3/bin:$PATH PYTHONNOUSERSITE=1
+#   # REQUIRED: drop conda-forge's libglvnd (pulled in via matplotlib/qt, ffmpeg/sdl2), else
+#   # habitat-sim loads it and EGL fails ("GL::Context: cannot retrieve OpenGL version"):
+#   micromamba remove -y --force -p ./envs/m3 libegl libgl libglx libglvnd
+#
+#   # CUDA 11.8 nvcc + headers, only to compile GroundingDINO / detectron2
+#   # (skip if a system CUDA 11.8 toolkit exists; a CUDA 12.x nvcc is rejected by torch):
+#   micromamba create -y -p ./envs/cuda118 -c nvidia/label/cuda-11.8.0 --override-channels \
+#       cuda-nvcc cuda-cudart-dev libcublas-dev libcusparse-dev libcusolver-dev \
+#       libcurand-dev cuda-cccl cuda-nvtx cuda-cupti
+#   ln -sfn lib envs/cuda118/lib64
+#   export CUDA_HOME=$PWD/envs/cuda118 PATH=$PWD/envs/cuda118/bin:$PATH FORCE_CUDA=1 \
+#          TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0+PTX"
+#
+#   # habitat-lab 0.1.7 (challenge-2021) + the HM3D-M3 patch
+#   git init habitat-lab && cd habitat-lab
+#   git fetch --depth 1 https://github.com/facebookresearch/habitat-lab.git d6ed1c0a0e786f16f261de2beafe347f4186d0d8
+#   git checkout FETCH_HEAD && git apply ../docker/patches/habitat-lab-vln.patch
+#   python setup.py develop --all --no-deps && cd ..
+#
+#   # GroundingDINO (REQUIRED by every LaViRA-M3 row)
+#   git init GroundingDINO
+#   git -C GroundingDINO fetch --depth 1 https://github.com/IDEA-Research/GroundingDINO.git 57535c5a79791cb76e36fdb64975271354f10251
+#   git -C GroundingDINO checkout FETCH_HEAD
+#   pip install --no-build-isolation --no-deps -e GroundingDINO
+#
+#   # adapted baselines only
+#   pip install -r requirements-baselines.txt    # + detectron2 v0.6, see that file's header
+#
+# Headless rendering also needs EGL_PLATFORM=surfaceless and the NVIDIA EGL vendor file
+# (/usr/share/glvnd/egl_vendor.d/10_nvidia.json, a copy is in docker/10_nvidia.json);
+# a normal NVIDIA driver install already provides it.
+name: hm3d-m3
+channels:
+  - conda-forge
+  - aihabitat
+dependencies:
+  - python=3.8.20
+  - pip
+  # habitat-sim 0.1.7, headless, no Bullet, commit 856d4b0 (same commit as the paper image)
+  - aihabitat::habitat-sim=0.1.7=py3.8_headless_linux_856d4b08c1a2632626bf0d205bf46471a99502b7
+  - pip:
+      - setuptools<70
+      - wheel
+      - --extra-index-url https://download.pytorch.org/whl/cu118
+      - torch==2.4.1+cu118
+      - torchvision==0.19.1+cu118
+      - torchaudio==2.4.1+cu118
+      - -r requirements.txt

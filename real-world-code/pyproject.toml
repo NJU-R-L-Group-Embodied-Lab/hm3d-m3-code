@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lavira_m3"
+version = "0.1.0"
+description = "Robot-independent shared-map visual navigation with ROS 1 and ROS 2 adapters"
+readme = "README.md"
+# The sdist ships only HM3D-M3 files: native/ (GPL/Apache/BSD) is pruned in MANIFEST.in.
+# License text: the repository's top-level LICENSE (CC BY-NC-SA 4.0).
+license = {text = "CC-BY-NC-SA-4.0"}
+# 3.8 is kept for ROS 1 Noetic (Ubuntu 20.04): the package compiles and imports there.
+# The offline test suite has been run on Python 3.10 and 3.12.
+requires-python = ">=3.8"
+dependencies = ["numpy>=1.21", "Pillow>=9", "openai>=1.0,<3", "PyYAML>=6"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "ruff>=0.8"]
+
+[project.scripts]
+lavira_m3 = "lavira_m3.cli:main"
+
+[tool.setuptools]
+license-files = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"lavira_m3" = ["web/*", "adapters/ros2/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]

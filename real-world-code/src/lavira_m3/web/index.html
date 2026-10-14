@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>lavira_m3 · multi-robot field board</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Original field-board layout: control deck, shared map, aligned agent cameras. -->
+    <header>
+      <div class="header-brand">
+        <p class="header-kicker">M3 / MULTI-ROBOT LIVE BOARD</p>
+        <h1>lavira_m3 <span>field board</span></h1>
+        <small>SHARED 2D MAP · <span id="portLabel"></span></small>
+      </div>
+      <div class="fleet-strip" id="fleetStrip" aria-label="Live fleet status"></div>
+    </header>
+    <section class="record-toolbar" aria-label="Recording and replay">
+      <span class="record-kicker">Session log</span>
+      <button id="recordStart" type="button">Start recording</button>
+      <button id="recordStop" type="button" disabled>Stop recording</button>
+      <select id="recordingSelect" aria-label="Select recording">
+        <option value="">Select a recording</option>
+      </select>
+      <button id="replayStart" type="button">Replay</button>
+      <button id="replayStop" type="button" disabled>Stop replay</button>
+      <button id="replayDownloadFrame" type="button">Download frame</button>
+      <button id="replayDownloadAll" type="button" disabled>Download all frames</button>
+      <div class="replay-progress" id="replayProgress" hidden>
+        <input
+          id="replaySeek"
+          type="range"
+          min="0"
+          max="0"
+          value="0"
+          disabled
+          aria-label="Replay progress"
+        />
+        <span id="replayTime">0 / 0</span>
+      </div>
+      <span id="replayStamp" class="replay-stamp">—</span>
+      <span id="recordStatus" role="status">Live</span>
+    </section>
+    <details class="net-board" aria-label="Network monitor">
+      <summary class="net-head">
+        <span class="net-kicker">NETWORK · HTTP + NIC</span
+        ><b id="netIface">NIC —</b
+        ><span id="netAlert" class="net-alert">Waiting for samples</span>
+      </summary>
+      <div class="net-body">
+        <div class="net-strip" id="netStrip"></div>
+        <canvas
+          id="netSpark"
+          width="720"
+          height="44"
+          aria-label="Network traffic history"
+        ></canvas>
+        <details class="net-details">
+          <summary>Channels · Mbps / requests / latency</summary>
+          <p id="netSummary" class="net-summary"></p>
+          <div class="net-tables">
+            <table>
+              <thead>
+                <tr>
+                  <th>Channel</th>
+                  <th>Up</th>
+                  <th>Down</th>
+                  <th>Req/s</th>
+                  <th>Avg/max ms</th>
+                </tr>
+              </thead>
+              <tbody id="netChannelRows"></tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Upload</th>
+                  <th>Download</th>
+                  <th>Last</th>
+                </tr>
+              </thead>
+              <tbody id="netRobotRows"></tbody>
+            </table>
+          </div>
+          <div class="net-history-head">
+            <span>Per-second log</span
+            ><button id="netCopy" type="button">Copy log</button>
+          </div>
+          <div class="net-history-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>NIC↓</th>
+                  <th>NIC↑</th>
+                  <th>HTTP↓</th>
+                  <th>HTTP↑</th>
+                </tr>
+              </thead>
+              <tbody id="netHistoryRows"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </details>
+    <main>
+      <aside>
+        <div class="goal-actions" id="laviraPanel">
+          <p class="panel-kicker" id="teamLabel">TEAM TASK BOARD</p>
+          <section class="task-board-view" aria-live="polite">
+            <h3>Current task board</h3>
+            <ul id="taskBoardSummary" class="task-board-list"></ul>
+            <span id="taskBoardCount" class="task-board-count"
+              >Shared task board · connecting</span
+            >
+          </section>
+          <details class="task-write-panel" open>
+            <summary>Goal editor · ON / IIN / TN</summary>
+            <div class="task-import">
+              <label
+                >Import goals JSON<input
+                  id="goalImport"
+                  type="file"
+                  accept=".json,application/json" /></label
+              ><button id="addGoal" type="button">Add goal</button>
+            </div>
+            <div id="laviraGoals"></div>
+            <button id="laviraSubmit" type="button">Send goals and start search</button>
+            <button id="laviraClearRuntime" type="button">
+              Clear previous-run overlays
+            </button>
+            <p class="note" id="laviraStatus" role="status"></p>
+          </details>
+          <details class="public-tools">
+            <summary>Tools and display options</summary>
+            <button id="rebuildMap" type="button">
+              Clear map history and rebuild fused map
+            </button>
+            <label
+              >Map view<select id="mapView">
+                <option value="sources">Shared observations</option>
+                <option value="fused">Fused map</option>
+              </select></label
+            >
+            <label>Focus agent<select id="selectedAgent"></select></label>
+            <div id="sourceLayers"></div>
+            <label
+              ><input id="showFused" type="checkbox" checked />Shared observations</label
+            >
+            <label
+              ><input id="showPlan" type="checkbox" checked />Next goal /
+              planned path</label
+            >
+            <label
+              ><input id="showLaviraVa" type="checkbox" checked />VA projection</label
+            >
+            <label
+              ><input
+                id="showActual"
+                type="checkbox"
+                checked
+              />Traveled trajectory</label
+            >
+            <label
+              ><input id="showPrediction" type="checkbox" checked />MPC reference /
+              prediction</label
+            >
+            <button id="showFilterRanges" type="button">Notes and filters</button>
+            <p class="note" id="hint">Waiting for data</p>
+          </details>
+        </div>
+      </aside>
+      <section class="map-wrap" id="mapWrap" aria-label="Shared map and cameras">
+        <canvas id="c" aria-label="Shared map (drag to pan, scroll to zoom)"></canvas>
+        <div class="map-status" id="mapStatus" role="status">Waiting for map</div>
+        <div class="legend" id="legend"></div>
+        <div class="zoom">
+          <button id="zoomIn" title="Zoom in">+</button
+          ><button id="zoomOut" title="Zoom out">−</button
+          ><button id="zoomFit" class="fit">Reset</button>
+          <div class="lvl" id="zoomLvl">—</div>
+        </div>
+        <section
+          class="robot-strip"
+          id="robotStrip"
+          aria-label="Agent status panels"
+        ></section>
+      </section>
+    </main>
+    <dialog id="rawJsonDialog">
+      <h2 id="rawJsonTitle">Raw JSON</h2>
+      <pre id="rawJsonContent"></pre>
+      <form method="dialog"><button>Close</button></form>
+    </dialog>
+    <dialog id="rawImageDialog">
+      <h2 id="rawImageTitle">Raw images</h2>
+      <div id="rawImageContent"></div>
+      <form method="dialog"><button>Close</button></form>
+    </dialog>
+    <dialog id="filterRangesDialog">
+      <h2>Notes and filters</h2>
+      <p>
+        The map shows shared observations, planned paths, traveled trajectories and
+        VA projections. Red X axis points forward, green Y axis points left.
+      </p>
+      <p>
+        Navigation frame: <b id="frameLabel"></b
+        >. Colored robot footprints and obstacle inflation come from the current
+        config.
+      </p>
+      <pre id="filterRangesContent"></pre>
+      <form method="dialog"><button>Close</button></form>
+    </dialog>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+<?xml version="1.0"?><package format="3">
+<name>livox_ros_driver2</name><version>0.1.0</version>
+<description>Upstream Livox message definitions only; hardware drivers are external.</description>
+<maintainer email="maintainers@example.org">Navigation maintainers</maintainer>
+<license>MIT</license><depend>std_msgs</depend><buildtool_depend>catkin</buildtool_depend><build_depend>message_generation</build_depend><exec_depend>message_runtime</exec_depend></package>

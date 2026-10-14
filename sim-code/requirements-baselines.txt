@@ -1,0 +1,59 @@
+# HM3D-M3: extra requirements for the four adapted baselines (VLFM, EGO-Swarm,
+# Co-NavGPT2, DM3-Nav) and optional detectors. Install AFTER requirements.txt:
+#
+#   pip install -r requirements-baselines.txt
+#
+# Versions are pinned to the environment the baseline numbers were produced in.
+# LaViRA-M3 rows need only requirements.txt + GroundingDINO (see requirements.txt);
+# nothing in this file.
+#
+# Who needs what
+#   clip-anytorch     `import clip` (OpenAI CLIP API, ViT-B/32): EGO-Swarm / Co-NavGPT2
+#                     TN matching (benchmark/dm3_perception.py) and the vendored
+#                     DM3-Nav matcher. Weights are downloaded on first use to
+#                     $HOME/.cache/clip (clip.load ignores XDG_CACHE_HOME; the image sets
+#                     HOME=/opt/m3home so compose can mount the cache there).
+#   fvcore ... psutil  runtime of the vendored DM3-Nav / home-robot / Detic code
+#                     (sim-code/third_party, assembled by third_party/fetch.sh); without them
+#                     `python -m benchmark.dm3_official.runner` fails at import
+#                     (e.g. "No module named 'psutil'").
+#
+# Packages that are NOT pip-installable from this file (build from source):
+#
+#   detectron2 0.6 (DM3-Nav / Detic). Needs a CUDA 11.8 nvcc (CUDA_HOME) and torch
+#   already installed; builds in ~2 min against torch 2.4.1+cu118 with gcc 11:
+#       git init detectron2 && cd detectron2
+#       git fetch --depth 1 https://github.com/facebookresearch/detectron2.git refs/tags/v0.6:refs/tags/v0.6
+#       git checkout v0.6 && cd ..
+#       FORCE_CUDA=1 pip install --no-build-isolation -e detectron2
+#
+#   GroundingDINO is NOT a baseline extra: it is required by every LaViRA-M3 row and
+#   is installed together with requirements.txt (see the header of that file).
+#
+#   SuperGluePretrainedNetwork (DM3-Nav image goals and the OWL sidecar /match_image).
+#     Magic Leap non-commercial license: never downloaded automatically. See
+#     third_party/fetch.sh (SUPERGLUE_DIR=...) and DM3_SUPERGLUE_WEIGHTS_DIR.
+
+clip-anytorch==2.6.0
+ftfy==6.2.3
+wcwidth==0.2.14
+
+# DM3-Nav / Detic runtime
+fvcore==0.1.5.post20221221
+iopath==0.1.9
+portalocker==3.0.0
+hydra-core==1.3.5
+omegaconf==2.3.1
+antlr4-python3-runtime==4.9.3
+pycocotools==2.0.7
+bresenham==0.2.1
+pandas==2.0.3
+pytz==2026.3.post1
+tzdata==2026.3
+scikit-learn==1.3.2
+threadpoolctl==3.5.0
+joblib==1.4.2
+trimesh==4.12.2
+tabulate==0.9.0
+termcolor==2.4.0
+psutil==7.2.2

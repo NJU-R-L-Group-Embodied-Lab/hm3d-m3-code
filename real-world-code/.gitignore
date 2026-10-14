@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+.runtime/
+*.log
+*.bag
+*.db3
+*.pcd
+.env
+.env.*
+!.env.example
+
+log/
+
+# Local plain-text identity terms for tools/check_source.py (never committed)
+tools/identity_terms.local.txt
+
+# GPL native components, fetched + patched by native/fetch_native.sh (never committed)
+native/common/src/localization/FAST_LIO/
+native/ros1/src/localization/FAST_LIO/
+native/ros2/src/localization/FAST_LIO/
+native/common/src/planner/Ego-Planner/
+native/ros1/src/planner/Ego-Planner/
+native/ros2/src/planner/Ego-Planner/

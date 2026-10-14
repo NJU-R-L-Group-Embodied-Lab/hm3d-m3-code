@@ -1,0 +1,21 @@
+# Upstream files for native/common/src/planner/Ego-Planner (read by fetch_native.sh).
+# SOURCE  upstream-path  destination (relative to the component directory)
+EGO_PLANNER_V2 LICENSE LICENSE
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/cmake/FindEigen3.cmake Utils/quadrotor_msgs/cmake/FindEigen3.cmake
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/include/quadrotor_msgs/comm_types.h Utils/quadrotor_msgs/include/quadrotor_msgs/comm_types.h
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/include/quadrotor_msgs/decode_msgs.h Utils/quadrotor_msgs/include/quadrotor_msgs/decode_msgs.h
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/include/quadrotor_msgs/encode_msgs.h Utils/quadrotor_msgs/include/quadrotor_msgs/encode_msgs.h
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/msg/AuxCommand.msg Utils/quadrotor_msgs/msg/AuxCommand.msg
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/msg/Corrections.msg Utils/quadrotor_msgs/msg/Corrections.msg
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/msg/Odometry.msg Utils/quadrotor_msgs/msg/Odometry.msg
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/src/decode_msgs.cpp Utils/quadrotor_msgs/src/decode_msgs.cpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/Utils/quadrotor_msgs/src/encode_msgs.cpp Utils/quadrotor_msgs/src/encode_msgs.cpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/plan_manage/launch/include/advanced_param.xml planner/plan_manage/launch/include/advanced_param.xml
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/plan_manage/launch/include/run_in_sim.xml planner/plan_manage/launch/include/run_in_sim.xml
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/plan_manage/launch/include/simulator.xml planner/plan_manage/launch/include/simulator.xml
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/plan_manage/src/ego_replan_fsm.cpp planner/plan_manage/src/ego_replan_fsm.cpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/plan_manage/src/traj_server.cpp planner/plan_manage/src/traj_server.cpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/traj_opt/include/optimizer/gcopter.hpp planner/traj_opt/include/optimizer/gcopter.hpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/traj_opt/include/optimizer/lbfgs.hpp planner/traj_opt/include/optimizer/lbfgs.hpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/traj_opt/include/optimizer/poly_traj_utils.hpp planner/traj_opt/include/optimizer/poly_traj_utils.hpp
+EGO_PLANNER_V2 swarm-playground/main_ws/src/planner/traj_opt/include/optimizer/root_finder.hpp planner/traj_opt/include/optimizer/root_finder.hpp

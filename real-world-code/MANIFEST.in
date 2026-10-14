@@ -1,0 +1,13 @@
+include README.md README_zh.md .editorconfig
+recursive-include configs *.json
+recursive-include assets *.png
+recursive-include tools *.py
+recursive-include tests *.py *.json
+global-exclude __pycache__ *.py[cod] *.pcd *.bag *.db3
+prune .runtime
+prune .venv
+prune log
+# native/ holds GPL-2.0, GPL-3.0, Apache-2.0 and BSD components and is not part of the
+# CC BY-NC-SA 4.0 Python package.
+prune native
+exclude tools/*.local.txt

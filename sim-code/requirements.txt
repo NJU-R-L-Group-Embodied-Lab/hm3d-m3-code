@@ -1,0 +1,146 @@
+# HM3D-M3 simulation stack: core Python requirements (Python 3.8).
+#
+# All versions are pinned to the environment that produced the paper numbers.
+# The list holds only the distributions imported by the code in sim-code/ (benchmark,
+# vlnce_baselines, habitat_extensions) and by habitat-sim / habitat-lab 0.1.7,
+# plus their transitive dependencies.
+#
+# NOT installed from this file (see docker/Dockerfile and HOW_TO_RUN.md):
+#   torch==2.4.1+cu118 torchvision==0.19.1+cu118 torchaudio==2.4.1+cu118
+#       pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 \
+#           --index-url https://download.pytorch.org/whl/cu118
+#   habitat-sim 0.1.7   headless, commit 856d4b0: conda package from the aihabitat channel
+#                       (habitat-sim=0.1.7=py3.8_headless_linux_856d4b08c1a2632626bf0d205bf46471a99502b7)
+#   habitat-lab 0.1.7   commit d6ed1c0 (tag v0.1.7 / challenge-2021) + docker/patches/habitat-lab-vln.patch,
+#                       installed with `python setup.py develop --all --no-deps`
+#   GroundingDINO       commit 57535c5, built from source with
+#                       `pip install --no-build-isolation --no-deps -e GroundingDINO`
+#                       (REQUIRED: every LaViRA-M3 row imports it, see HOW_TO_RUN.md)
+#   baseline-only packages  -> requirements-baselines.txt
+#
+# Install: pip install -r requirements.txt   (needs git: segment_anything comes from GitHub)
+
+# --- imported directly by sim-code/ -------------------------------------------------
+numpy==1.23.5
+numpy-quaternion==2023.0.4
+opencv-python-headless==4.10.0.84
+pillow==10.4.0
+scipy==1.10.1
+matplotlib==3.7.5
+networkx==3.1
+scikit-image==0.21.0
+scikit-fmm==2024.5.29
+imageio==2.35.1
+imageio-ffmpeg==0.5.1
+gym==0.26.2
+attrs==25.3.0
+tqdm==4.67.1
+openai==2.2.0
+transformers==4.46.3
+tokenizers==0.20.3
+huggingface-hub==0.36.0
+safetensors==0.5.3
+timm==1.0.21
+supervision==0.16.0
+fastdtw==0.3.4
+dtw-python==1.5.3
+fast-slic==0.4.0
+pyinstrument==5.1.1
+requests==2.32.3
+
+# --- LaViRA-M3 Grounded-SAM import chain (vlnce_baselines/map/semantic_prediction.py) ---
+# ZS_Evaluator_mp imports groundingdino + segment_anything at module level, so every
+# LaViRA-M3 row needs them installed (the weights under data/grounded_sam/ are not
+# loaded by any shipped method). addict / yapf / platformdirs / tomli are GroundingDINO's
+# runtime dependencies; GroundingDINO itself is installed with --no-deps because its
+# setup.py would pull opencv-python and supervision==0.4.0 over the pins above.
+segment_anything @ git+https://github.com/facebookresearch/segment-anything.git@dca509fe793f601edb92606367a655c15ac00fdf
+addict==2.4.0
+yapf==0.43.0
+platformdirs==4.3.6
+tomli==2.0.2
+
+# --- habitat-sim 0.1.7 / habitat-lab 0.1.7 runtime requirements ------------------
+numba==0.58.1
+llvmlite==0.41.1
+yacs==0.1.8
+GitPython==3.1.45
+lmdb==1.7.5
+webdataset==0.1.40
+ifcfg==0.24
+moviepy==1.0.2
+msgpack==1.0.8
+tensorboard==2.14.0
+PyYAML==6.0.3
+
+# --- transitive dependencies (versions from the reference environment) -----------
+# Exception: the reference image also carried click 8.3.0, grpcio 1.76.0, Markdown 3.10,
+# markdown-it-py 4.0.0, protobuf 6.33.0 and Werkzeug 3.1.3 as eggs that habitat-lab's
+# `setup.py develop` had pulled in. They require Python >= 3.9/3.10 (pip refuses them on
+# 3.8, and Werkzeug 3.1.3 does not even import there), and no code path in sim-code/ imports
+# them, so they are pinned to the newest releases that support Python 3.8.
+absl-py==2.3.1
+annotated-types==0.7.0
+anyio==4.5.2
+braceexpand==0.1.7
+cachetools==5.5.2
+certifi==2024.8.30
+charset-normalizer==3.3.2
+click==8.1.8
+cloudpickle==3.1.2
+contourpy==1.1.1
+cycler==0.12.1
+decorator==4.4.2
+distro==1.9.0
+exceptiongroup==1.3.0
+filelock==3.16.1
+fonttools==4.57.0
+fsspec==2025.3.0
+gitdb==4.0.12
+google-auth==2.42.1
+google-auth-oauthlib==1.0.0
+grpcio==1.70.0
+gym-notices==0.1.0
+h11==0.16.0
+hf-xet==1.2.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.7
+importlib_metadata==8.5.0
+importlib_resources==6.4.5
+jiter==0.9.1
+kiwisolver==1.4.7
+lazy_loader==0.4
+Markdown==3.7
+markdown-it-py==3.0.0
+MarkupSafe==2.1.1
+mdurl==0.1.2
+oauthlib==3.3.1
+objectio==0.2.29
+packaging==25.0
+proglog==0.1.12
+protobuf==5.29.5
+pyasn1==0.6.1
+pyasn1_modules==0.4.2
+pydantic==2.10.6
+pydantic_core==2.27.2
+Pygments==2.19.2
+pyparsing==3.1.4
+python-dateutil==2.9.0.post0
+PyWavelets==1.4.1
+regex==2024.11.6
+requests-oauthlib==2.0.0
+rich==14.2.0
+rsa==4.9.1
+shellingham==1.5.4
+simplejson==3.20.2
+six==1.17.0
+smmap==5.0.2
+sniffio==1.3.1
+tensorboard-data-server==0.7.2
+tifffile==2023.7.10
+typer==0.20.0
+typing_extensions==4.13.2
+urllib3==2.2.3
+Werkzeug==3.0.6
+zipp==3.20.2

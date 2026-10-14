@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ekf</name>
+  <version>0.0.0</version>
+  <description>The ekf package</description>
+  <maintainer email="anonymous@example.com">HM3D-M3 authors</maintainer>
+  <license>BSD-3-Clause</license>
+  <!-- Derived from ekf_pose in HKUST-Aerial-Robotics/HKUST-ELEC5660-Introduction-to-Aerial-Robotics
+       (BSD-3-Clause, see LICENSE in native/common/src/localization/ekf_pose). See native/THIRD_PARTY.md -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>eigen</depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>launch_xml</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

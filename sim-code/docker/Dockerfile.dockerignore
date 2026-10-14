@@ -1,0 +1,7 @@
+# Build context is sim-code/. The images only need the requirement files, docker/
+# and services/; everything else (data, logs, weights) stays out of the context.
+*
+!requirements.txt
+!requirements-baselines.txt
+!docker/
+!services/owl_sidecar.py

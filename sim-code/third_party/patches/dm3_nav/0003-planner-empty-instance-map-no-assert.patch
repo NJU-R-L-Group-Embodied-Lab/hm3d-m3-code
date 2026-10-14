@@ -1,0 +1,78 @@
+HM3D-M3: upstream asserts when a goal instance raster is empty. On HM3D-M3 a
+Detic instance id can go stale; treat it as a plan-to-instance failure so the
+episode continues instead of crashing the worker.
+
+--- a/src/home_robot/home_robot/navigation_planner/fixed_discrete_planner.py
++++ b/src/home_robot/home_robot/navigation_planner/fixed_discrete_planner.py
+@@ -1356,12 +1356,15 @@
+         return best_frontier_map
+ 
+     def plan_to_instance_goal(self, instance_goal_id, try_best, postfix, method="hybrid"):
++        packed = self.get_instance_planning_maps(instance_goal_id, method)
++        if packed is None:
++            return False, False, None, True, {}
+         (
+             goal_instance_map,
+             best_viewpoint,
+             is_local,
+             traversible,
+-        ) = self.get_instance_planning_maps(instance_goal_id, method)
++        ) = packed
+         robot_loc = self.semantic_map.get_loc(is_local)
+ 
+         if self.visualization_level > 2:
+@@ -1441,14 +1444,17 @@
+                         goal_map, MC.OBSTACLE_MAP, is_local
+                     )
+                     self.curr_frontier_dilation = self.start_obs_dilation_selem_radius
++            packed = self.get_instance_planning_maps(
++                instance_goal_id, method, force_global=force_global
++            )
++            if packed is None:
++                break
+             (
+                 goal_instance_map,
+                 best_viewpoint,
+                 is_local,
+                 traversible,
+-            ) = self.get_instance_planning_maps(
+-                instance_goal_id, method, force_global=force_global
+-            )
++            ) = packed
+             robot_loc = self.semantic_map.get_loc(is_local)
+ 
+         if reachable:
+@@ -1520,7 +1526,15 @@
+                 for view in instance_views
+             ]
+         
+-        assert goal_instance_map.sum() > 0, f"Goal instance map is empty for instance {instance_goal_id}."
++        if goal_instance_map is None or np.asarray(goal_instance_map).sum() <= 0:
++            # Official code asserts here. On HM3D-M3 a Detic instance id can
++            # go stale (empty raster). Treat as plan-to-instance failure so
++            # the episode continues instead of aborting the worker.
++            self.log.warning(
++                "Goal instance map is empty for instance %s; skip instance plan.",
++                instance_goal_id,
++            )
++            return None
+ 
+         goal_instance_map = self.get_largest_cluster(goal_instance_map, is_local)
+ 
+@@ -1552,11 +1566,12 @@
+         )
+ 
+     def get_instance_planning_maps(self, instance_goal_id, method, force_global=False):
+-        goal_instance_map, best_viewpoint, is_local = (
+-            self.get_goal_instance_map_and_viewpoint(
+-                instance_goal_id, method, force_global=force_global
+-            )
++        packed = self.get_goal_instance_map_and_viewpoint(
++            instance_goal_id, method, force_global=force_global
+         )
++        if packed is None:
++            return None
++        goal_instance_map, best_viewpoint, is_local = packed
+         traversible = self.get_traversible(is_local, self.curr_instance_dilation)
+         return (
+             goal_instance_map,

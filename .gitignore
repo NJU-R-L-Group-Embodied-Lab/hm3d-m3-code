@@ -1,0 +1,46 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+.venv/
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Model weights and large artifacts (never committed)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Simulation runtime (data root, logs, OWL shared memory, run outputs)
+/sim-code/data/
+/sim-code/logs/
+/sim-code/.owl_shm/
+/sim-code/results/
+.owl_shm/
+
+# Per-episode results are not released: keep run outputs out of the repo
+# wherever logs/ or results/ live (e.g. a custom OUT_ROOT or a real-world-code/ log dir).
+**/logs/**/episode_*.json
+**/results/**/episode_*.json
+**/logs/**/metrics_list.json
+**/results/**/metrics_list.json
+**/logs/**/aggregate.json
+**/results/**/aggregate.json
+**/logs/**/work_queue.json
+**/logs/**/stop_attempts*.json
+
+# Archives and media that must not land in the code repo
+*.zip
+*.tar
+*.tar.gz
+*.mp4
+*.pptx

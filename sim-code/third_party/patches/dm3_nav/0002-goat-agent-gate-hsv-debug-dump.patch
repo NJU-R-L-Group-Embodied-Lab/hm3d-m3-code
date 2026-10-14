@@ -1,0 +1,24 @@
+HM3D-M3: upstream writes a ~3.5 MB HSV .npy debug dump every step regardless
+of VISUALIZATION_LEVEL. Gate it behind visualization_level > 2. Pure debug I/O;
+no algorithmic effect.
+
+--- a/src/home_robot/home_robot/agent/goat_agent/goat_agent.py
++++ b/src/home_robot/home_robot/agent/goat_agent/goat_agent.py
+@@ -504,10 +504,13 @@
+             h, w = depth.shape[:2]
+             fx = fy = self.semantic_map_module.camera_matrix.f
+             hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+-            np.save(
+-                os.path.join(self.planner.vis_dir, f"{self.total_timesteps}_hsv.npy"),
+-                hsv
+-            )
++            # lavira: skip unconditional per-step 3.5MB hsv dump (pure debug I/O;
++            # upstream writes it every step regardless of VISUALIZATION_LEVEL)
++            if self.visualization_level > 2:
++                np.save(
++                    os.path.join(self.planner.vis_dir, f"{self.total_timesteps}_hsv.npy"),
++                    hsv
++                )
+ 
+             hsv_lower, hsv_upper = self.neighbor_color
+             color_mask = cv2.inRange(hsv, hsv_lower, hsv_upper)

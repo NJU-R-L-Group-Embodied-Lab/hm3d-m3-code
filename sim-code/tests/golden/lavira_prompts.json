@@ -1,0 +1,833 @@
+{
+ "argparse": {
+  "actions": {
+   "clean_found_state": {
+    "default": false,
+    "options": [
+     "--clean-found-state"
+    ],
+    "required": false
+   },
+   "config": {
+    "default": "vlnce_baselines/config/multi_objectnav_v2.yaml",
+    "options": [
+     "--config"
+    ],
+    "required": false
+   },
+   "count": {
+    "default": 0,
+    "options": [
+     "--count"
+    ],
+    "required": false
+   },
+   "disable_path_budget": {
+    "default": false,
+    "options": [
+     "--disable-path-budget"
+    ],
+    "required": false
+   },
+   "dynamic_queue": {
+    "default": "",
+    "options": [
+     "--dynamic-queue"
+    ],
+    "required": false
+   },
+   "episode_ids": {
+    "default": "",
+    "options": [
+     "--episode-ids"
+    ],
+    "required": false
+   },
+   "episodes": {
+    "default": null,
+    "options": [
+     "--episodes"
+    ],
+    "required": true
+   },
+   "force_team_topdown_map": {
+    "default": false,
+    "options": [
+     "--force-team-topdown-map"
+    ],
+    "required": false
+   },
+   "iin_images_dir": {
+    "default": "data/datasets/ma_objectnav/val/iin_images",
+    "options": [
+     "--iin-images-dir"
+    ],
+    "required": false
+   },
+   "la_thinking_budget": {
+    "default": 1024,
+    "options": [
+     "--la-thinking-budget"
+    ],
+    "required": false
+   },
+   "limit": {
+    "default": 0,
+    "options": [
+     "--limit"
+    ],
+    "required": false
+   },
+   "log_traj": {
+    "default": false,
+    "options": [
+     "--log-traj"
+    ],
+    "required": false
+   },
+   "map_size_cm": {
+    "default": 0,
+    "options": [
+     "--map-size-cm"
+    ],
+    "required": false
+   },
+   "max_episode_steps": {
+    "default": 300,
+    "options": [
+     "--max-episode-steps"
+    ],
+    "required": false
+   },
+   "multimodal_search": {
+    "default": false,
+    "options": [
+     "--multimodal-search"
+    ],
+    "required": false
+   },
+   "no_frontier": {
+    "default": false,
+    "options": [
+     "--no-frontier"
+    ],
+    "required": false
+   },
+   "no_la_thinking": {
+    "default": false,
+    "options": [
+     "--no-la-thinking"
+    ],
+    "required": false
+   },
+   "no_team_topdown_map": {
+    "default": false,
+    "options": [
+     "--no-team-topdown-map"
+    ],
+    "required": false
+   },
+   "no_vlm_parallel": {
+    "default": false,
+    "options": [
+     "--no-vlm-parallel"
+    ],
+    "required": false
+   },
+   "ovn_confirm": {
+    "default": false,
+    "options": [
+     "--ovn-confirm"
+    ],
+    "required": false
+   },
+   "pano_n": {
+    "default": 4,
+    "options": [
+     "--pano-n"
+    ],
+    "required": false
+   },
+   "pano_stride_deg": {
+    "default": 90.0,
+    "options": [
+     "--pano-stride-deg"
+    ],
+    "required": false
+   },
+   "qwen_claim_min_confidence": {
+    "default": null,
+    "options": [
+     "--qwen-claim-min-confidence"
+    ],
+    "required": false
+   },
+   "qwen_focus_cooldown_steps": {
+    "default": null,
+    "options": [
+     "--qwen-focus-cooldown-steps"
+    ],
+    "required": false
+   },
+   "qwen_focus_min_confidence": {
+    "default": null,
+    "options": [
+     "--qwen-focus-min-confidence"
+    ],
+    "required": false
+   },
+   "qwen_observer_cooldown_steps": {
+    "default": null,
+    "options": [
+     "--qwen-observer-cooldown-steps"
+    ],
+    "required": false
+   },
+   "qwen_observer_min_confidence": {
+    "default": null,
+    "options": [
+     "--qwen-observer-min-confidence"
+    ],
+    "required": false
+   },
+   "qwen_observer_object_only": {
+    "default": false,
+    "options": [
+     "--qwen-observer-object-only"
+    ],
+    "required": false
+   },
+   "save_dir": {
+    "default": "logs/ma_search_2a",
+    "options": [
+     "--save-dir"
+    ],
+    "required": false
+   },
+   "scenes_dir": {
+    "default": "data/scene_datasets/hm3d-1.0",
+    "options": [
+     "--scenes-dir"
+    ],
+    "required": false
+   },
+   "seed": {
+    "default": 0,
+    "options": [
+     "--seed"
+    ],
+    "required": false
+   },
+   "semantic_contract_lease_steps": {
+    "default": null,
+    "options": [
+     "--semantic-contract-lease-steps"
+    ],
+    "required": false
+   },
+   "skip_pano_viz": {
+    "default": false,
+    "options": [
+     "--skip-pano-viz"
+    ],
+    "required": false
+   },
+   "start": {
+    "default": 0,
+    "options": [
+     "--start"
+    ],
+    "required": false
+   },
+   "use_vlm": {
+    "default": false,
+    "options": [
+     "--use-vlm"
+    ],
+    "required": false
+   },
+   "verify": {
+    "default": false,
+    "options": [
+     "--verify"
+    ],
+    "required": false
+   },
+   "verify_backend": {
+    "default": "sift",
+    "options": [
+     "--verify-backend"
+    ],
+    "required": false
+   },
+   "visualize": {
+    "default": false,
+    "options": [
+     "--visualize"
+    ],
+    "required": false
+   },
+   "viz_every": {
+    "default": 2,
+    "options": [
+     "--viz-every"
+    ],
+    "required": false
+   },
+   "vlm_parallel_workers": {
+    "default": 0,
+    "options": [
+     "--vlm-parallel-workers"
+    ],
+    "required": false
+   },
+   "worker_id": {
+    "default": "",
+    "options": [
+     "--worker-id"
+    ],
+    "required": false
+   }
+  },
+  "control_mode_choices": [
+   "k2-async-keep-goals-pa"
+  ],
+  "defaults": {
+   "clean_found_state": false,
+   "config": "vlnce_baselines/config/multi_objectnav_v2.yaml",
+   "count": 0,
+   "disable_path_budget": false,
+   "dynamic_queue": "",
+   "episode_ids": "",
+   "force_team_topdown_map": false,
+   "la_thinking_budget": 1024,
+   "limit": 0,
+   "log_traj": false,
+   "map_size_cm": 0,
+   "max_episode_steps": 300,
+   "multimodal_search": false,
+   "no_frontier": false,
+   "no_la_thinking": false,
+   "no_team_topdown_map": false,
+   "no_vlm_parallel": false,
+   "ovn_confirm": false,
+   "pano_n": 4,
+   "pano_stride_deg": 90.0,
+   "qwen_claim_min_confidence": null,
+   "qwen_focus_cooldown_steps": null,
+   "qwen_focus_min_confidence": null,
+   "qwen_observer_cooldown_steps": null,
+   "qwen_observer_min_confidence": null,
+   "qwen_observer_object_only": false,
+   "save_dir": "logs/ma_search_2a",
+   "scenes_dir": "data/scene_datasets/hm3d-1.0",
+   "seed": 0,
+   "semantic_contract_lease_steps": null,
+   "skip_pano_viz": false,
+   "start": 0,
+   "use_vlm": false,
+   "verify": false,
+   "verify_backend": "sift",
+   "visualize": false,
+   "viz_every": 2,
+   "vlm_parallel_workers": 0,
+   "worker_id": ""
+  }
+ },
+ "ast": {
+  "async_board_pa": {
+   "_goal_detail_line": "68c7a64efa0462a7da71",
+   "_pa_line": "56452f56aa08c77fbe49",
+   "_record_for_agent": "8f8f04a2f522b676bde8",
+   "apply_la_json_field_contract": "cac2bd06e9c167249b14",
+   "build_async_board_instruction": "09572a7c096599c90986",
+   "build_async_ind_pa_instruction": "c7f4c3e6676c53be20b6",
+   "build_object_board": "6577cb989a3b875080f1",
+   "build_own_progress_note": "3c0d7b1b461e35a59dd6",
+   "build_progress_broadcast": "98a1b09ccb9d73168a33",
+   "build_teammate_progress_claims": "af9b157a0afd21a1a322",
+   "collect_progress_records": "68e697bc90663d9c8dd3",
+   "current_views_section_label": "559c6f8281b193061f3d",
+   "goal_label": "6d60d9f9d3746f377dd7",
+   "goal_public_id": "3999b2c83b8ce51fb647",
+   "has_la_field_contract": "9fe4ad81c8164732609d",
+   "progress_age_label": "f655f6bf5a79363f02de"
+  },
+  "coord_shell": {
+   "CoordChannel.<fields>": "e5b7008bb377df40ba38",
+   "CoordChannel.false_positive": "8048366dbbf4f70bca4c",
+   "CoordChannel.message": "4739717c813d0edd8abc",
+   "CoordChannel.observe_positions": "30bb98aea736f4a99ce7",
+   "CoordChannel.summary": "d78a4fb286703eb8ef08",
+   "_gini": "bce87c1af32c7f704b2e"
+  },
+  "ma_search": {
+   "EpisodeAdapter.<fields>": "20717db8df44341de9f7",
+   "EpisodeAdapter.__init__": "c73e03d13f7b6d1b8621",
+   "MASearchRunner.<fields>": "51ee41e013cd57a43bc2",
+   "MASearchRunner._build_metrics_result": "f96b1a6f694b3a216577",
+   "MASearchRunner._dump_summary": "f7cba41ed9823f1d8229",
+   "MASearchRunner._geo_to_reach": "a90dad948b08cc94c1a2",
+   "MASearchRunner._get_qwen_goal_focus_observer": "78f990ca2e935312d59d",
+   "MASearchRunner._get_qwen_target_observer": "009a2d9b7d7ebcf687ec",
+   "MASearchRunner._get_tn_client": "7ee3049f3b41189bc287",
+   "MASearchRunner._get_verifier": "447d3a0fee027a754e55",
+   "MASearchRunner._image_yes_no": "c9bc4bac88b311b10ac7",
+   "MASearchRunner._on_yes_no": "1bf321f2491672e99398",
+   "MASearchRunner._render_viz": "c42777ad4911f75a399b",
+   "MASearchRunner._resolve_iin_path": "fc819e01b8b096790b71",
+   "MASearchRunner._run_episode": "350fda488f5263c43a5e",
+   "MASearchRunner._tn_yes_no": "aa61cecadfdc47e75e4a",
+   "MASearchRunner._verify_goal": "224fe8c94a22538fb801",
+   "MASearchRunner._verify_policy_found": "da077e6776e365a0f903",
+   "_Goal.<fields>": "285e7ba456cb43f843d3",
+   "_Goal.__init__": "b8d5c505cc818e615b03",
+   "_announcement_target_text": "90c9408ea67f87d179e5",
+   "_as_obs_list": "cb1693cf3f0fb4a4db59",
+   "_bbox_confidence": "865cf871443af1c2891d",
+   "_build_clean_target_instruction": "b741345c0436d023f4f2",
+   "_claim_doublecheck_sentence": "fc052a57d76f1f7397b4",
+   "_collect_panorama_control": "df9a647063ca75e773c2",
+   "_collect_panorama_sync_all": "f44764c23f604afc64d6",
+   "_collect_panorama_sync_subset": "e5fca1896ffa89370fe6",
+   "_compose_soft_contract_focus_prompt": "c7c35e0d1a0fa2a5912b",
+   "_control_mode_flags": "fc07147373c516092d3c",
+   "_depth_at_bbox_metres": "bc242b4108f7cb95c240",
+   "_finish_pano_frames": "765526aec1ed0cf6e691",
+   "_goal_id_to_index": "8e202d91a0026ff643ac",
+   "_goal_label": "10b3cc0c19802e7baea6",
+   "_goal_public_id": "5413dcd0ef1c1e8de465",
+   "_hold_obs_list": "5cb855bd5ec5ae0c1b69",
+   "_is_habitat_stop": "c7f1a1c6324512417a25",
+   "_load_cfg": "5bba22c8841bf70b96da",
+   "_pano_spin_params": "013eb5f5467738f52568",
+   "_policy_selected_claim_prompt": "240fcee1dcbe02d8a73d",
+   "_record_pano_tick": "03dc889a197e7ea6e695",
+   "_resolve_scene": "33649723ae5c34de56ca",
+   "_select_decoupled_claim_goal": "8a013f23631eecddfb26",
+   "_select_opportunistic_visible_goal": "9202decdc9f4a1fe5589",
+   "_select_soft_contract_claim_goal": "c01b83aad859cc66612e",
+   "_set_num_agents": "9dcab48d13b55eef53c6",
+   "_shares_direct_teammate_focus": "86b19317c8d6d5e0b950",
+   "_sim_step_obs_list": "a94e8669da4ed2e0c8bb",
+   "main": "bcf9ef85314665dada11"
+  },
+  "pano_views": {
+   "_action_space": "a0a5f188bef73582d37f",
+   "_depth_center_mean": "c9bf20c21021d6d22483",
+   "_is_turn_key": "7cef8dbf446e92140007",
+   "action_line": "bee4c0ace0096aec949b",
+   "align_spin_frames": "45fd1142bdb1cf5f8b63",
+   "apply_turn_amounts": "bf58167ec44b7589fa27",
+   "blocked_frame_indices": "199769106a02fbc773c3",
+   "direction_to_frame_idx": "431520078fb7e362c636",
+   "doublecheck_phrase": "0090a24eced347989dab",
+   "frame_idx_for_angle": "918d7464851bc8b47ffd",
+   "keep_stride": "b37440c9789be727cb1d",
+   "navigate_action_choices": "e77a2be4279c3bb19ee6",
+   "nearest_cardinal_name": "3bbfb6f4df109147ce91",
+   "parse_focus_view": "566a249892e4bee06cc8",
+   "parse_navigate_action": "008a75bf569c572d4e0a",
+   "restore_turn_amounts": "cf262fcf223f7f4a6f7d",
+   "rotate_agent_left": "ce33edf02867a2ebb3d1",
+   "snapshot_turn_amounts": "78de2b006cc8066df9b8",
+   "spin_plan": "4c7ba43729c436a77ed7",
+   "temporary_turn_deg": "aa3bf0beefd10a1601d7",
+   "view_index_legend": "e251d762338d3d9fea53",
+   "view_specs": "613d8584e18a6a0b8c2e",
+   "views_phrase": "e2626dc3eb0af6120d71",
+   "yaw_left_rotation": "a9441e226c7f19cd5675"
+  }
+ },
+ "constants": {
+  "async_board_pa": {
+   "BOARD_PROTOCOL": "You are {who}. Continue searching unresolved targets.\nASYNC_BOARD_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the current 4-directional views. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (object board, teammate progress_analysis, target references, Navigation History, and current 4-directional views). Prefer unresolved targets a teammate is not covering unless your current views give stronger evidence.\nSTOP protocol: stop=true proposes FOUND verification for exactly one unresolved goal_id via claim_goal_id; it does not end the episode and does not retire you. After a failed claim, keep searching. After a passed claim, the board updates; keep searching remaining unresolved targets. The episode ends only when every target is V2-verified FOUND or the team step budget is reached.\nDo not output a stair field.\nThe object board and teammate progress_analysis are not STOP evidence. Confirm FOUND with your own current 4-directional views only.",
+   "CURRENT_VIEWS_SECTION_LABEL": "\n=== CURRENT 4-DIRECTIONAL VIEWS ===\nDo not copy these frames into progress_analysis. reasoning / action / STOP use these frames together with every other input.",
+   "FIELD_CONTRACT_MARKER": "ASYNC_BOARD_PA_FIELD_CONTRACT",
+   "HISTORY_SECTION_LABEL": "\n=== NAVIGATION HISTORY ===\nThese frames are the only visual source for progress_analysis. If empty, say so in progress_analysis. reasoning / action / STOP may also use these frames together with every other input.",
+   "IND_PA_FIELD_CONTRACT_MARKER": "ASYNC_IND_PA_FIELD_CONTRACT",
+   "KEEP_GOALS_PROTOCOL": "You are {who}. Continue searching unresolved targets.\nASYNC_IND_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the {views}. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (target list, teammate progress_analysis, target references, Navigation History, and {views}). There is no object board. Teammate FOUND is not listed.\nDo not output a stair field.\nTeammate progress_analysis is not STOP evidence. Confirm FOUND with your own {views} only.",
+   "NONE_PA": "none",
+   "_ASYNC_CODA": "This is an async Independent LA decision (no team top-down map). Do not include map_understanding. progress_analysis: Navigation History frames only. reasoning / action / STOP: use ALL inputs.\n",
+   "_JSON_CODA_BOARD": "\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 4-dir views. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (board, teammate progress_analysis, references, Navigation History, and current 4-dir views).\n",
+   "_JSON_CODA_KEEP": "\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 4-dir views. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (target list, teammate progress_analysis, references, Navigation History, and current 4-dir views).\n",
+   "_PA_FIELD": "\"progress_analysis\": \"<from Navigation History frames ONLY; do not caption current 4-dir views>\"",
+   "_PA_PLACEHOLDERS": [
+    "\"progress_analysis\": \"<brief assessment of what you've observed and done so far>\"",
+    "\"progress_analysis\": \"<brief assessment of search progress>\"",
+    "\"progress_analysis\": \"<assessment of current progress toward instruction completion>\"",
+    "\"progress_analysis\": \"<assessment of search progress (e.g., target spotted, room type identified)>\"",
+    "\"progress_analysis\": \"<searching/spotted/exploring>\"",
+    "\"progress_analysis\": \"<assessment of search progress>\"",
+    "\"progress_analysis\": \"<brief assessment of progress>\""
+   ],
+   "_RA_FIELD": "\"reasoning\": \"<use ALL inputs to choose action and STOP>\"",
+   "_RA_PLACEHOLDERS": [
+    "\"reasoning_action\": \"<reasoning for the chosen action, given the updated TODO + observations>\"",
+    "\"reasoning\": \"<explanation of the chosen action>\"",
+    "\"reasoning\": \"<explanation of chosen action>\""
+   ],
+   "_SINGLE_AGENT_CODA": "This is a single-agent LaViRA decision. Do not include map_understanding. Use only first-person views, navigation history, and the target list.\n",
+   "_TASK_RA_NEW": "2. THEN, write `reasoning_action` and choose the next action using ALL inputs.",
+   "_TASK_RA_OLD": "2. THEN, write `reasoning_action` and choose the next action based on the UPDATED TODO\n   plus what you observe."
+  },
+  "coord_shell": {
+   "SHELL_RESPONSIBILITIES": [
+    "task_allocation",
+    "communication",
+    "shared_mapping",
+    "multi_goal_termination",
+    "collision_congestion"
+   ]
+  },
+  "ma_search": {
+   "FAIL_R_M": 3.0,
+   "MAX_LAST_METER_STEPS": 8,
+   "_DASH_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  },
+  "pano_views": {
+   "CARDINALS": {
+    "0": [
+     "forward",
+     "FORWARD"
+    ],
+    "180": [
+     "behind",
+     "BEHIND"
+    ],
+    "270": [
+     "right",
+     "RIGHT"
+    ],
+    "90": [
+     "left",
+     "LEFT"
+    ]
+   },
+   "DIRECTION_TO_ANGLE": {
+    "behind": 180,
+    "forward": 0,
+    "left": 90,
+    "right": 270
+   }
+  }
+ },
+ "modes": {
+  "k2-async-keep-goals-pa": {
+   "flags_clean": {
+    "share_announcements": false,
+    "share_assignment_hint": false,
+    "share_found_messages": false,
+    "share_found_state": false,
+    "use_frontier": false,
+    "use_mce_primary_frontier": false,
+    "use_qwen_claim_scoring": true
+   },
+   "flags_no_frontier": {
+    "share_announcements": false,
+    "share_assignment_hint": false,
+    "share_found_messages": false,
+    "share_found_state": false,
+    "use_frontier": false,
+    "use_mce_primary_frontier": false,
+    "use_qwen_claim_scoring": true
+   },
+   "flags_unclean": {
+    "share_announcements": false,
+    "share_assignment_hint": false,
+    "share_found_messages": false,
+    "share_found_state": false,
+    "use_frontier": false,
+    "use_mce_primary_frontier": false,
+    "use_qwen_claim_scoring": true
+   },
+   "instructions": {
+    "k2_agent1_step3": {
+     "active_stop_goal_id": null,
+     "branch": "ind_pa",
+     "has_field_contract": true,
+     "instruction": "You are agent_1. Continue searching unresolved targets.\nASYNC_IND_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the current 4-directional views. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (target list, teammate progress_analysis, target references, Navigation History, and current 4-directional views). There is no object board. Teammate FOUND is not listed.\nDo not output a stair field.\nTeammate progress_analysis is not STOP evidence. Confirm FOUND with your own current 4-directional views only.\nTargets:\n- goal_0 [ON]: chair\n- goal_1 [TN]: stool; description: a white stool under a table\n- goal_2 [IIN]: sofa; reference image already verified\n- goal_5 [IIN]: bed; reference image unavailable\nVisible verified found targets: goal_2 [IIN]: sofa.\nContinue searching for targets not listed as visible verified found. STOP protocol: when one unresolved target is visibly reached within 1 metre, set stop=true and return claim_goal_id as exactly one of: goal_0, goal_1, goal_5. A four-direction panorama double-check will verify that claimed target.\nTeammate claimed progress_analysis (for reasoning_action only; do not copy into progress_analysis):\n- agent_0 (3 steps ago): I checked the hallway and a bedroom; no chair yet.",
+     "la_prompt": "2. THEN, write `reasoning_action` and choose the next action using ALL inputs.\n{\n    \"progress_analysis\": \"<from Navigation History frames ONLY; do not caption current 4-dir views>\",\n    \"reasoning\": \"<use ALL inputs to choose action and STOP>\",\n}\nLook at the current 4-directional views and the 4-dir views again.\nThis is an async Independent LA decision (no team top-down map). Do not include map_understanding. progress_analysis: Navigation History frames only. reasoning / action / STOP: use ALL inputs.\n\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 4-dir views. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (target list, teammate progress_analysis, references, Navigation History, and current 4-dir views).\n",
+     "reference_images": []
+    },
+    "k3_agent2_8view": {
+     "active_stop_goal_id": null,
+     "branch": "ind_pa",
+     "has_field_contract": true,
+     "instruction": "You are agent_2. Continue searching unresolved targets.\nASYNC_IND_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the current 8-view 45° panorama. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (target list, teammate progress_analysis, target references, Navigation History, and current 8-view 45° panorama). There is no object board. Teammate FOUND is not listed.\nDo not output a stair field.\nTeammate progress_analysis is not STOP evidence. Confirm FOUND with your own current 8-view 45° panorama only.\nTargets:\n- goal_0 [ON]: chair\n- goal_1 [TN]: stool; description: a white stool under a table\n- goal_2 [IIN]: sofa; reference image #1\n- goal_5 [IIN]: bed; reference image unavailable\nVisible verified found targets: goal_0 [ON]: chair, goal_5 [IIN]: bed.\nContinue searching for targets not listed as visible verified found.\nReference images are target examples only; they are not observations or found evidence. STOP protocol: when one unresolved target is visibly reached within 1 metre, set stop=true and return claim_goal_id as exactly one of: goal_1, goal_2. An 8-view 45° panorama double-check will verify that claimed target.\nTeammate claimed progress_analysis (for reasoning_action only; do not copy into progress_analysis):\n- agent_0 (3 steps ago): I checked the hallway and a bedroom; no chair yet.\n- agent_1: none",
+     "la_prompt": "2. THEN, write `reasoning_action` and choose the next action using ALL inputs.\n{\n    \"progress_analysis\": \"<from Navigation History frames ONLY; do not caption current 8-view 45° panorama>\",\n    \"reasoning\": \"<use ALL inputs to choose action and STOP>\",\n}\nLook at the current 4-directional views and the 4-dir views again.\nThis is an async Independent LA decision (no team top-down map). Do not include map_understanding. progress_analysis: Navigation History frames only. reasoning / action / STOP: use ALL inputs.\n\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 8-view 45° panorama. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (target list, teammate progress_analysis, references, Navigation History, and current 8-view 45° panorama).\n\n- action MUST be exactly one listed view (\"navigate to view 0\" ... \"navigate to view 7\", or backtrack). The chosen view is the frame you will face and the frame used for visual targeting.\n- Do not output focus_view.\n",
+     "reference_images": [
+      "goal_2"
+     ]
+    },
+    "mid_k2_agent1_found1": {
+     "active_stop_goal_id": null,
+     "branch": "ind_pa",
+     "has_field_contract": true,
+     "instruction": "You are agent_1. Continue searching unresolved targets.\nASYNC_IND_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the current 4-directional views. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (target list, teammate progress_analysis, target references, Navigation History, and current 4-directional views). There is no object board. Teammate FOUND is not listed.\nDo not output a stair field.\nTeammate progress_analysis is not STOP evidence. Confirm FOUND with your own current 4-directional views only.\nTargets:\n- goal_0 [ON]: chair\n- goal_1 [TN]: stool; description: a white stool under a table\n- goal_2 [IIN]: sofa; reference image #1\n- goal_5 [IIN]: bed; reference image unavailable\nVisible verified found targets: goal_1 [TN]: stool.\nContinue searching for targets not listed as visible verified found.\nReference images are target examples only; they are not observations or found evidence. STOP protocol: when one unresolved target is visibly reached within 1 metre, set stop=true and return claim_goal_id as exactly one of: goal_0, goal_2, goal_5. A four-direction panorama double-check will verify that claimed target.\nTeammate claimed progress_analysis (for reasoning_action only; do not copy into progress_analysis):\n- agent_0 (3 steps ago): I checked the hallway and a bedroom; no chair yet.",
+     "la_prompt": "2. THEN, write `reasoning_action` and choose the next action using ALL inputs.\n{\n    \"progress_analysis\": \"<from Navigation History frames ONLY; do not caption current 4-dir views>\",\n    \"reasoning\": \"<use ALL inputs to choose action and STOP>\",\n}\nLook at the current 4-directional views and the 4-dir views again.\nThis is an async Independent LA decision (no team top-down map). Do not include map_understanding. progress_analysis: Navigation History frames only. reasoning / action / STOP: use ALL inputs.\n\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 4-dir views. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (target list, teammate progress_analysis, references, Navigation History, and current 4-dir views).\n",
+     "reference_images": [
+      "goal_2"
+     ]
+    },
+    "start_k2_agent0": {
+     "active_stop_goal_id": null,
+     "branch": "ind_pa",
+     "has_field_contract": true,
+     "instruction": "You are agent_0. Continue searching unresolved targets.\nASYNC_IND_PA_FIELD_CONTRACT\nField sources:\n- progress_analysis: look ONLY at YOUR Navigation History image sequence. Write what you have observed and done so far from those frames. If history is empty, say so. Do not describe, caption, or quote the current 4-directional views. Do not mention teammate claims.\n- reasoning, action, and STOP: use ALL inputs (target list, teammate progress_analysis, target references, Navigation History, and current 4-directional views). There is no object board. Teammate FOUND is not listed.\nDo not output a stair field.\nTeammate progress_analysis is not STOP evidence. Confirm FOUND with your own current 4-directional views only.\nTargets:\n- goal_0 [ON]: chair\n- goal_1 [TN]: stool; description: a white stool under a table\n- goal_2 [IIN]: sofa; reference image #1\n- goal_5 [IIN]: bed; reference image unavailable\nVisible verified found targets: none.\nContinue searching for targets not listed as visible verified found.\nReference images are target examples only; they are not observations or found evidence. STOP protocol: when one unresolved target is visibly reached within 1 metre, set stop=true and return claim_goal_id as exactly one of: goal_0, goal_1, goal_2, goal_5. A four-direction panorama double-check will verify that claimed target.\nTeammate claimed progress_analysis (for reasoning_action only; do not copy into progress_analysis):\n- agent_1: none",
+     "la_prompt": "2. THEN, write `reasoning_action` and choose the next action using ALL inputs.\n{\n    \"progress_analysis\": \"<from Navigation History frames ONLY; do not caption current 4-dir views>\",\n    \"reasoning\": \"<use ALL inputs to choose action and STOP>\",\n}\nLook at the current 4-directional views and the 4-dir views again.\nThis is an async Independent LA decision (no team top-down map). Do not include map_understanding. progress_analysis: Navigation History frames only. reasoning / action / STOP: use ALL inputs.\n\nJSON field contract (mandatory for this decision):\n- progress_analysis MUST use Navigation History frames only. Do not caption current 4-dir views. Do not mention teammates.\n- reasoning / action / STOP MUST use ALL inputs (target list, teammate progress_analysis, references, Navigation History, and current 4-dir views).\n",
+     "reference_images": [
+      "goal_2"
+     ]
+    }
+   },
+   "parsed_args": {
+    "clean_found_state": true,
+    "config": "vlnce_baselines/config/multi_objectnav_v2.yaml",
+    "control_mode": "k2-async-keep-goals-pa",
+    "count": 0,
+    "disable_path_budget": true,
+    "dynamic_queue": "",
+    "episode_ids": "",
+    "force_team_topdown_map": false,
+    "la_thinking_budget": 1024,
+    "limit": 0,
+    "log_traj": false,
+    "map_size_cm": 0,
+    "max_episode_steps": 300,
+    "multimodal_search": false,
+    "no_frontier": false,
+    "no_la_thinking": false,
+    "no_team_topdown_map": true,
+    "no_vlm_parallel": false,
+    "ovn_confirm": false,
+    "pano_n": 4,
+    "pano_stride_deg": 90.0,
+    "qwen_claim_min_confidence": null,
+    "qwen_focus_cooldown_steps": null,
+    "qwen_focus_min_confidence": null,
+    "qwen_observer_cooldown_steps": null,
+    "qwen_observer_min_confidence": null,
+    "qwen_observer_object_only": false,
+    "save_dir": "logs/ma_search_2a",
+    "scenes_dir": "data/scene_datasets/hm3d-1.0",
+    "seed": 0,
+    "semantic_contract_lease_steps": null,
+    "skip_pano_viz": false,
+    "start": 0,
+    "use_vlm": true,
+    "verify": false,
+    "verify_backend": "sift",
+    "visualize": false,
+    "viz_every": 2,
+    "vlm_parallel_workers": 0,
+    "worker_id": ""
+   },
+   "runner_attrs": {
+    "_ctor": {
+     "cfg": "<SimpleNamespace>",
+     "history_interval": 2,
+     "la_enable_thinking": true,
+     "la_thinking_budget": 1024,
+     "max_episode_steps": 300,
+     "save_dir": "logs/ma_search_2a",
+     "use_continuous_history": true,
+     "use_vlm": true,
+     "visualize": false,
+     "viz_every": 2,
+     "vlm_parallel_workers": 0
+    },
+    "_evaluate": {
+     "n_adapters": 0,
+     "seed": 0
+    },
+    "_target_reference_images": null,
+    "_tn_client": null,
+    "_verifier": null,
+    "clean_found_state": true,
+    "control_mode": "k2-async-keep-goals-pa",
+    "iin_lookup": {},
+    "log_traj": false,
+    "mce_realloc_every": 25,
+    "mce_repulse_lambda": 0.6,
+    "multimodal_search": true,
+    "pano_n": 4,
+    "pano_stride_deg": 90.0,
+    "qwen_claim_max_depth_m": 0.9,
+    "qwen_claim_min_confidence": 0.8,
+    "share_announcements": false,
+    "share_assignment_hint": false,
+    "share_found_messages": false,
+    "share_found_state": false,
+    "skip_pano_viz": false,
+    "use_async_board_pa": false,
+    "use_async_ind_pa": true,
+    "use_frontier": false,
+    "use_mce_primary_frontier": false,
+    "use_policy_selected_claim_goal": true,
+    "use_qwen_claim_scoring": true,
+    "verify_backend": "sift",
+    "verify_modality": false
+   },
+   "startup_log": [
+    "[ma-search] 0 episodes, use_vlm=True, control_mode=k2-async-keep-goals-pa, team_topdown=False, async_board_pa=False, async_ind_pa=True, vlm_parallel_workers=0, dynamic_queue=off, la_thinking=on, history_interval=2, use_backtrack=True, pano_n=4, pano_stride_deg=90.0"
+   ]
+  }
+ },
+ "pano": {
+  "4_90": {
+   "claim_doublecheck": "A four-direction panorama double-check will verify that claimed target.",
+   "current_views_label": "\n=== CURRENT 4-DIRECTIONAL VIEWS ===\nDo not copy these frames into progress_analysis. reasoning / action / STOP use these frames together with every other input.",
+   "doublecheck": "A four-direction panorama double-check will verify that claimed target.",
+   "spin_plan": [
+    12,
+    30.0,
+    3
+   ],
+   "view_index_legend": "0=0° FORWARD, 1=90° LEFT, 2=180° BEHIND, 3=270° RIGHT",
+   "view_specs": [
+    {
+     "angle": 0,
+     "index": 0,
+     "label": "Current view 0 (0°, FORWARD):",
+     "name": "forward"
+    },
+    {
+     "angle": 90,
+     "index": 1,
+     "label": "Current view 1 (90°, LEFT):",
+     "name": "left"
+    },
+    {
+     "angle": 180,
+     "index": 2,
+     "label": "Current view 2 (180°, BEHIND):",
+     "name": "behind"
+    },
+    {
+     "angle": 270,
+     "index": 3,
+     "label": "Current view 3 (270°, RIGHT):",
+     "name": "right"
+    }
+   ],
+   "views_phrase": "current 4-directional views"
+  },
+  "6_60": {
+   "claim_doublecheck": "A four-direction panorama double-check will verify that claimed target.",
+   "current_views_label": "\n=== CURRENT 4-DIRECTIONAL VIEWS ===\nDo not copy these frames into progress_analysis. reasoning / action / STOP use these frames together with every other input.",
+   "doublecheck": "A four-direction panorama double-check will verify that claimed target.",
+   "spin_plan": [
+    6,
+    60.0,
+    1
+   ],
+   "view_index_legend": "0=0° FORWARD, 1=60°, 2=120°, 3=180° BEHIND, 4=240°, 5=300°",
+   "view_specs": [
+    {
+     "angle": 0,
+     "index": 0,
+     "label": "Current view 0 (0°, FORWARD):",
+     "name": "forward"
+    },
+    {
+     "angle": 60,
+     "index": 1,
+     "label": "Current view 1 (60°):",
+     "name": "view_1"
+    },
+    {
+     "angle": 120,
+     "index": 2,
+     "label": "Current view 2 (120°):",
+     "name": "view_2"
+    },
+    {
+     "angle": 180,
+     "index": 3,
+     "label": "Current view 3 (180°, BEHIND):",
+     "name": "behind"
+    },
+    {
+     "angle": 240,
+     "index": 4,
+     "label": "Current view 4 (240°):",
+     "name": "view_4"
+    },
+    {
+     "angle": 300,
+     "index": 5,
+     "label": "Current view 5 (300°):",
+     "name": "view_5"
+    }
+   ],
+   "views_phrase": "current 6-view panorama"
+  },
+  "8_45": {
+   "claim_doublecheck": "An 8-view 45° panorama double-check will verify that claimed target.",
+   "current_views_label": "\n=== CURRENT 8-VIEW 45° PANORAMA ===\nDo not copy these frames into progress_analysis. reasoning / action / STOP use these frames together with every other input. Frames: 0=0° FORWARD, 1=45°, 2=90° LEFT, 3=135°, 4=180° BEHIND, 5=225°, 6=270° RIGHT, 7=315°. Choose action 'navigate to view k' for the frame you will face. Do not output focus_view.",
+   "doublecheck": "An 8-view 45° panorama double-check will verify that claimed target.",
+   "spin_plan": [
+    8,
+    45.0,
+    1
+   ],
+   "view_index_legend": "0=0° FORWARD, 1=45°, 2=90° LEFT, 3=135°, 4=180° BEHIND, 5=225°, 6=270° RIGHT, 7=315°",
+   "view_specs": [
+    {
+     "angle": 0,
+     "index": 0,
+     "label": "Current view 0 (0°, FORWARD):",
+     "name": "forward"
+    },
+    {
+     "angle": 45,
+     "index": 1,
+     "label": "Current view 1 (45°):",
+     "name": "view_1"
+    },
+    {
+     "angle": 90,
+     "index": 2,
+     "label": "Current view 2 (90°, LEFT):",
+     "name": "left"
+    },
+    {
+     "angle": 135,
+     "index": 3,
+     "label": "Current view 3 (135°):",
+     "name": "view_3"
+    },
+    {
+     "angle": 180,
+     "index": 4,
+     "label": "Current view 4 (180°, BEHIND):",
+     "name": "behind"
+    },
+    {
+     "angle": 225,
+     "index": 5,
+     "label": "Current view 5 (225°):",
+     "name": "view_5"
+    },
+    {
+     "angle": 270,
+     "index": 6,
+     "label": "Current view 6 (270°, RIGHT):",
+     "name": "right"
+    },
+    {
+     "angle": 315,
+     "index": 7,
+     "label": "Current view 7 (315°):",
+     "name": "view_7"
+    }
+   ],
+   "views_phrase": "current 8-view 45° panorama"
+  },
+  "history_label": "\n=== NAVIGATION HISTORY ===\nThese frames are the only visual source for progress_analysis. If empty, say so in progress_analysis. reasoning / action / STOP may also use these frames together with every other input."
+ },
+ "paper_modes": [
+  "k2-async-keep-goals-pa"
+ ]
+}

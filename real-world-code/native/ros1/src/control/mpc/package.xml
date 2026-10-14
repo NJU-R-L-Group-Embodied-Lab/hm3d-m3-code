@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mpc</name>
+  <version>0.0.0</version>
+  <description>model predictive control</description>
+
+
+  <maintainer email="anonymous@example.com">HM3D-M3 authors</maintainer>
+
+  <license>MIT</license>
+  <!-- include/mpc_utils/{minco,poly_traj_utils,root_finder}.hpp: MIT, Copyright (c) 2021 Zhepei Wang (via ZJU-FAST-Lab/Elastic-Tracker); see native/THIRD_PARTY.md -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>traj_utils</build_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>nav_msgs</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>traj_utils</exec_depend>
+  <depend>geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>eigen</depend>
+  
+
+  <build_depend>message_generation</build_depend>
+  <build_export_depend>message_generation</build_export_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+</package>

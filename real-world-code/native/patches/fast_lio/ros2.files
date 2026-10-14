@@ -1,0 +1,17 @@
+# Upstream files for native/ros2/src/localization/FAST_LIO (read by fetch_native.sh).
+# SOURCE  upstream-path  destination (relative to the component directory)
+FAST_LIO_ROS2 CMakeLists.txt CMakeLists.txt
+FAST_LIO_ROS2 LICENSE LICENSE
+FAST_LIO_ROS2 config/avia.yaml config/avia.yaml
+FAST_LIO_ROS2 config/horizon.yaml config/horizon.yaml
+FAST_LIO_ROS2 config/mid360.yaml config/mid360.yaml
+FAST_LIO_ROS2 config/ouster64.yaml config/ouster64.yaml
+FAST_LIO_ROS2 config/velodyne.yaml config/velodyne.yaml
+FAST_LIO_ROS2 include/common_lib.h include/common_lib.h
+IKD_TREE ikd_Tree.cpp include/ikd-Tree/ikd_Tree.cpp
+IKD_TREE ikd_Tree.h include/ikd-Tree/ikd_Tree.h
+FAST_LIO_ROS2 package.xml package.xml
+FAST_LIO_ROS2 src/IMU_Processing.hpp src/IMU_Processing.hpp
+FAST_LIO_ROS2 src/laserMapping.cpp src/laserMapping.cpp
+FAST_LIO_ROS2 src/preprocess.cpp src/preprocess.cpp
+FAST_LIO_ROS2 src/preprocess.h src/preprocess.h

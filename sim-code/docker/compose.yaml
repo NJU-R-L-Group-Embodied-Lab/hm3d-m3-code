@@ -1,0 +1,107 @@
+# HM3D-M3 compose file. Run every command from sim-code/:
+#
+#   cp .env.example .env        # fill in LLM_API_KEY, DATA_ROOT, MODEL_ROOT, ...
+#   docker compose -f docker/compose.yaml --env-file .env build
+#   docker compose -f docker/compose.yaml --env-file .env up -d m3 owl
+#   docker compose -f docker/compose.yaml --env-file .env exec m3 bash
+#
+# Services
+#   m3   Habitat 0.1.7 simulation container (LaViRA-M3 and the adapted baselines).
+#        Idles with `sleep infinity`; run scripts with `exec m3 bash scripts/...`.
+#   owl  OWL detector sidecar(s), one per GPU in OWL_GPUS, on port
+#        OWL_PORT_BASE + gpu. Needed only by the four adapted baselines.
+#
+# Both services use the host network, so the simulation container reaches the
+# sidecar at http://127.0.0.1:<port>. Both mount sim-code/.owl_shm at the same path
+# (/workspace/sim/.owl_shm): frames are passed through files in that directory.
+#
+# Relative paths below resolve against this file's directory (sim-code/docker/).
+
+name: hm3d-m3
+
+services:
+  m3:
+    image: hm3d-m3:dev
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        WITH_BASELINES: "${WITH_BASELINES:-1}"
+        MAX_JOBS: "${MAX_JOBS:-8}"
+    network_mode: host
+    # Sidecar frame files are named by PID: share the host PID namespace so that
+    # several containers using one OWL_SHM_DIR never collide.
+    pid: host
+    # Run as your host user so that files written into sim-code/ (logs/, .owl_shm/,
+    # __pycache__/) stay yours: set HOST_UID / HOST_GID in .env (`id -u` / `id -g`).
+    # Unset or empty = root, the image default.
+    user: "${HOST_UID:-0}:${HOST_GID:-0}"
+    shm_size: 32g
+    env_file:
+      - ../.env
+    environment:
+      OWL_SHM_DIR: /workspace/sim/.owl_shm
+      HF_HOME: /workspace/sim/data/models/hf
+      TORCH_HOME: /workspace/sim/data/models/torch
+      VLFM_BLIP2_DIR: /workspace/sim/data/models/blip2-itm-vit-g
+      PY: python
+    volumes:
+      - ..:/workspace/sim
+      - ${DATA_ROOT:-../data}:/workspace/sim/data
+      - ${MODEL_ROOT:-../data/models}:/workspace/sim/data/models
+      # CLIP ViT-B/32 (`import clip`) caches its weights under ~/.cache/clip.
+      - ${MODEL_ROOT:-../data/models}/clip:/opt/m3home/.cache/clip
+      - ../.owl_shm:/workspace/sim/.owl_shm
+    working_dir: /workspace/sim
+    command: ["sleep", "infinity"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, compute, utility, graphics, display]
+
+  owl:
+    image: hm3d-m3-owl:dev
+    build:
+      context: ..
+      dockerfile: docker/owl.Dockerfile
+    network_mode: host
+    shm_size: 8g
+    env_file:
+      - ../.env
+    environment:
+      OWL_GPUS: "${OWL_GPUS:-0}"
+      OWL_PORT_BASE: "${OWL_PORT_BASE:-18210}"
+      OWL_BIND_HOST: "${OWL_BIND_HOST:-127.0.0.1}"
+      OWL_SHM_DIR: /workspace/sim/.owl_shm
+      OWL_LOG_DIR: /workspace/sim/logs/owl
+      # owl runs as root; do not leave root-owned __pycache__/ in the bind-mounted sim-code/.
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HOME: /workspace/sim/data/models/hf
+      HF_HUB_OFFLINE: "${HF_HUB_OFFLINE:-0}"
+      TRANSFORMERS_OFFLINE: "${TRANSFORMERS_OFFLINE:-0}"
+      DM3_SUPERGLUE_WEIGHTS_DIR: /workspace/sim/data/datasets/dm3_official/superglue_weights
+    volumes:
+      - ..:/workspace/sim
+      - ${DATA_ROOT:-../data}:/workspace/sim/data
+      - ${MODEL_ROOT:-../data/models}:/workspace/sim/data/models
+      - ../.owl_shm:/workspace/sim/.owl_shm
+    working_dir: /workspace/sim
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'g=$${OWL_GPUS%%,*}; curl -fsS "http://127.0.0.1:$$(( $${OWL_PORT_BASE:-18210} + $${g:-0} ))/health"'
+      interval: 30s
+      timeout: 5s
+      start_period: 180s
+      retries: 3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

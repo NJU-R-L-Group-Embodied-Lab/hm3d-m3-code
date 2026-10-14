@@ -1,0 +1,23 @@
+HM3D-M3: let DM3_DETIC_CHECKPOINT point at the Detic SwinB checkpoint
+(weights are not part of the repo). Default path unchanged.
+
+--- a/src/home_robot/home_robot/perception/detection/detic/detic_perception.py
++++ b/src/home_robot/home_robot/perception/detection/detic/detic_perception.py
+@@ -93,9 +93,14 @@
+                 / "Detic/configs/Detic_LCOCOI21k_CLIP_SwinB_896b32_4x_ft4x_max-size.yaml"
+             )
+         if checkpoint_file is None:
+-            checkpoint_file = str(
+-                Path(__file__).resolve().parent
+-                / "Detic/models/Detic_LCOCOI21k_CLIP_SwinB_896b32_4x_ft4x_max-size.pth"
++            # lavira: checkpoint lives on the data mount (not vendored); env override.
++            import os as _os
++            checkpoint_file = _os.environ.get(
++                "DM3_DETIC_CHECKPOINT",
++                str(
++                    Path(__file__).resolve().parent
++                    / "Detic/models/Detic_LCOCOI21k_CLIP_SwinB_896b32_4x_ft4x_max-size.pth"
++                ),
+             )
+         if self.verbose:
+             print(

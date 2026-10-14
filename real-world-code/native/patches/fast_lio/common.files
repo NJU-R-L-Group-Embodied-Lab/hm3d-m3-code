@@ -1,0 +1,19 @@
+# Upstream files for native/common/src/localization/FAST_LIO (read by fetch_native.sh).
+# SOURCE  upstream-path  destination (relative to the component directory)
+FAST_LIO_MAIN LICENSE LICENSE
+FAST_LIO_MAIN include/Exp_mat.h include/Exp_mat.h
+FAST_LIO_MAIN include/IKFoM_toolkit/esekfom/esekfom.hpp include/IKFoM_toolkit/esekfom/esekfom.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/esekfom/util.hpp include/IKFoM_toolkit/esekfom/util.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/build_manifold.hpp include/IKFoM_toolkit/mtk/build_manifold.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/src/SubManifold.hpp include/IKFoM_toolkit/mtk/src/SubManifold.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/src/mtkmath.hpp include/IKFoM_toolkit/mtk/src/mtkmath.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/src/vectview.hpp include/IKFoM_toolkit/mtk/src/vectview.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/startIdx.hpp include/IKFoM_toolkit/mtk/startIdx.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/types/S2.hpp include/IKFoM_toolkit/mtk/types/S2.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/types/SOn.hpp include/IKFoM_toolkit/mtk/types/SOn.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/types/vect.hpp include/IKFoM_toolkit/mtk/types/vect.hpp
+FAST_LIO_MAIN include/IKFoM_toolkit/mtk/types/wrapped_cv_mat.hpp include/IKFoM_toolkit/mtk/types/wrapped_cv_mat.hpp
+FAST_LIO_MAIN include/matplotlibcpp.h include/matplotlibcpp.h
+FAST_LIO_MAIN include/so3_math.h include/so3_math.h
+FAST_LIO_MAIN include/use-ikfom.hpp include/use-ikfom.hpp
+FAST_LIO_MAIN msg/Pose6D.msg msg/Pose6D.msg

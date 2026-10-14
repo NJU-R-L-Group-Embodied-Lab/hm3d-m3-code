@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fastlio_planner_bridge</name>
+  <version>0.1.0</version>
+  <description>Validated odometry and shared-map EGO/MPC launch interfaces.</description>
+  <maintainer email="anonymous@example.com">HM3D-M3 authors</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>nav_msgs</depend>
+  <exec_depend>ekf</exec_depend>
+  <exec_depend>ego_planner</exec_depend>
+  <exec_depend>mpc</exec_depend>
+  <exec_depend>rviz</exec_depend>
+</package>

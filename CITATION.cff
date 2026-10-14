@@ -1,0 +1,69 @@
+cff-version: 1.2.0
+message: "If you use HM3D-M3, please cite it as below."
+title: "HM3D-M3: A Benchmark for Multi-Agent, Multi-Modal, Multi-Object Goal Navigation"
+type: software
+authors:
+  - family-names: "Ding"
+    given-names: "Hongyu"
+    affiliation: "School of Computer Science, Nanjing University; Institute of Automation, Chinese Academy of Sciences, and University of Chinese Academy of Sciences"
+  - family-names: "Xu"
+    given-names: "Kanyu"
+    affiliation: "School of Intelligence Science and Technology, Nanjing University"
+  - family-names: "Chen"
+    given-names: "Mingjia"
+    affiliation: "School of Electrical and Automation Engineering, Nanjing Normal University"
+  - family-names: "Chen"
+    given-names: "Zixuan"
+    affiliation: "School of Intelligence Science and Technology, Nanjing University"
+  - family-names: "Shi"
+    given-names: "Jieqi"
+    affiliation: "School of Intelligence Science and Technology, Nanjing University"
+  - family-names: "Huo"
+    given-names: "Jing"
+    affiliation: "School of Computer Science, Nanjing University"
+  - family-names: "Zhang"
+    given-names: "Yifan"
+    affiliation: "Institute of Automation, Chinese Academy of Sciences, and University of Chinese Academy of Sciences"
+  - family-names: "Gao"
+    given-names: "Yang"
+    affiliation: "School of Intelligence Science and Technology, Nanjing University"
+version: "1.0.0"
+date-released: "2026-10-13"
+license: CC-BY-NC-SA-4.0
+repository-code: "https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code"
+url: "https://robo-lavira.github.io/hm3d-m3/"
+keywords:
+  - embodied AI
+  - multi-agent navigation
+  - object goal navigation
+  - benchmark
+  - Habitat
+preferred-citation:
+  type: article
+  title: "HM3D-M3: A Benchmark for Multi-Agent, Multi-Modal, Multi-Object Goal Navigation"
+  authors:
+    - family-names: "Ding"
+      given-names: "Hongyu"
+      affiliation: "School of Computer Science, Nanjing University; Institute of Automation, Chinese Academy of Sciences, and University of Chinese Academy of Sciences"
+    - family-names: "Xu"
+      given-names: "Kanyu"
+      affiliation: "School of Intelligence Science and Technology, Nanjing University"
+    - family-names: "Chen"
+      given-names: "Mingjia"
+      affiliation: "School of Electrical and Automation Engineering, Nanjing Normal University"
+    - family-names: "Chen"
+      given-names: "Zixuan"
+      affiliation: "School of Intelligence Science and Technology, Nanjing University"
+    - family-names: "Shi"
+      given-names: "Jieqi"
+      affiliation: "School of Intelligence Science and Technology, Nanjing University"
+    - family-names: "Huo"
+      given-names: "Jing"
+      affiliation: "School of Computer Science, Nanjing University"
+    - family-names: "Zhang"
+      given-names: "Yifan"
+      affiliation: "Institute of Automation, Chinese Academy of Sciences, and University of Chinese Academy of Sciences"
+    - family-names: "Gao"
+      given-names: "Yang"
+      affiliation: "School of Intelligence Science and Technology, Nanjing University"
+  year: 2026

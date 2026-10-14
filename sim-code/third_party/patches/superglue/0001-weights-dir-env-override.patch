@@ -1,0 +1,35 @@
+HM3D-M3: let DM3_SUPERGLUE_WEIGHTS_DIR point at a directory holding
+superpoint_v1.pth / superglue_{indoor,outdoor}.pth. Default path unchanged.
+
+--- a/models/superglue.py
++++ b/models/superglue.py
+@@ -227,8 +227,12 @@
+         self.register_parameter('bin_score', bin_score)
+ 
+         assert self.config['weights'] in ['indoor', 'outdoor']
+-        path = Path(__file__).parent
+-        path = path / 'weights/superglue_{}.pth'.format(self.config['weights'])
++        # lavira: weights live on the data mount (not vendored); env override.
++        import os as _os
++        _wdir = _os.environ.get("DM3_SUPERGLUE_WEIGHTS_DIR")
++        path = Path(_wdir) if _wdir else Path(__file__).parent
++        path = path / 'weights/superglue_{}.pth'.format(self.config['weights']) if not _wdir \
++            else path / 'superglue_{}.pth'.format(self.config['weights'])
+         self.load_state_dict(torch.load(str(path)))
+         print('Loaded SuperGlue model (\"{}\" weights)'.format(
+             self.config['weights']))
+--- a/models/superpoint.py
++++ b/models/superpoint.py
+@@ -133,7 +133,11 @@
+             c5, self.config['descriptor_dim'],
+             kernel_size=1, stride=1, padding=0)
+ 
+-        path = Path(__file__).parent / 'weights/superpoint_v1.pth'
++        # lavira: weights live on the data mount (not vendored); env override.
++        import os as _os
++        _wdir = _os.environ.get("DM3_SUPERGLUE_WEIGHTS_DIR")
++        path = (Path(_wdir) / 'superpoint_v1.pth') if _wdir else \
++            Path(__file__).parent / 'weights/superpoint_v1.pth'
+         self.load_state_dict(torch.load(str(path)))
+ 
+         mk = self.config['max_keypoints']

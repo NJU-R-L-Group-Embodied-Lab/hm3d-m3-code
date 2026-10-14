@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<package format="3"><name>nav2_msgs</name><version>1.3.13</version>
+<description>Unmodified Nav2 Jazzy navigation action definitions, subset for this stack.</description>
+<maintainer email="maintainer@example.invalid">Project maintainer</maintainer>
+<license>Apache-2.0</license><buildtool_depend>ament_cmake</buildtool_depend>
+<build_depend>rosidl_default_generators</build_depend><exec_depend>rosidl_default_runtime</exec_depend>
+<depend>geometry_msgs</depend><depend>nav_msgs</depend><depend>builtin_interfaces</depend>
+<member_of_group>rosidl_interface_packages</member_of_group><export><build_type>ament_cmake</build_type></export></package>

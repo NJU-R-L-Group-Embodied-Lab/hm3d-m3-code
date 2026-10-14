@@ -1,0 +1,19 @@
+/**:
+  ros__parameters:
+    Rr_i:
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    tr_i:
+    - 0.0
+    - 0.0
+    - 0.01
+    imu_trans_x: 0.0
+    imu_trans_y: 0.0
+    imu_trans_z: 0.0
+    gyro_cov: 0.02
+    acc_cov: 0.5
+    position_cov: 0.01
+    q_rp_cov: 0.001
+    q_yaw_cov: 0.001

@@ -1,0 +1,27 @@
+{
+  "agents": {
+    "agent_0": {},
+    "agent_1": {},
+    "agent_2": {}
+  },
+  "frame": "map",
+  "body_frame": "base_link",
+  "topics": {
+    "odometry": "/odom",
+    "imu": "/imu/data",
+    "cloud": "/points",
+    "command": "/cmd_vel",
+    "map": "/map2d/planning"
+  },
+  "safety": {
+    "map_timeout": 5.0,
+    "odom_timeout": 0.2,
+    "command_timeout": 0.15,
+    "max_speed": 0.4,
+    "max_yaw_rate": 0.8
+  },
+  "services": {
+    "map": "http://127.0.0.1:8770",
+    "board": "http://127.0.0.1:8770"
+  }
+}

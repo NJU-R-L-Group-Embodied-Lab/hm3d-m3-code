@@ -1,0 +1,37 @@
+/**:
+  ros__parameters:
+    fsm.thresh_replan_time: 1.0
+    fsm.tracking_error_threshold: 0.3
+    fsm.tracking_error_confirmation: 0.2
+    fsm.tracking_error_replan_interval: 1.0
+    fsm.emergency_time: 1.0
+    fsm.realworld_experiment: false
+    fsm.fail_safe: true
+    manager.polyTraj_piece_length: 1.5
+    manager.feasibility_tolerance: 0.05
+    optimization.constraint_points_perPiece: 5
+    optimization.weight_obstacle: 10000.0
+    optimization.weight_obstacle_soft: 5000.0
+    optimization.weight_swarm: 0.0
+    optimization.weight_feasibility: 10000.0
+    optimization.weight_sqrvariance: 10000.0
+    optimization.weight_time: 10.0
+    optimization.weight_yaw_rate_continuity: 20.0
+    optimization.weight_heading_alignment: 50.0
+    optimization.motion_continuity_decay: 1.0
+    optimization.obstacle_clearance: 0.0
+    optimization.obstacle_clearance_soft: 0.0
+    optimization.swarm_clearance: 0.0
+    grid_map.obstacles_inflation: 0.0
+    optimization.record_opt: false
+    fsm.flight_type: 1
+    fsm.planning_horizon: 7.5
+    manager.planning_horizon: 7.5
+    manager.max_vel: 0.4
+    manager.max_acc: 0.8
+    manager.use_multitopology_trajs: false
+    manager.drone_id: 0
+    optimization.max_vel: 0.4
+    optimization.max_acc: 0.8
+    optimization.max_jer: 20.0
+    navigation.arrival_tolerance: 0.75

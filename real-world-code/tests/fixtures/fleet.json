@@ -1,0 +1,74 @@
+{
+  "agents": {
+    "large": {
+      "footprint": [
+        1.2,
+        0.95
+      ],
+      "envelope": [
+        0.6,
+        0.6,
+        0.475
+      ],
+      "own_filter": [
+        1.2,
+        0.7,
+        0.7
+      ],
+      "peer_filter": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "lidar_height": 0.735,
+      "inflate": 0.8,
+      "directions": [
+        "front",
+        "left_front",
+        "left",
+        "left_back",
+        "right_back",
+        "right",
+        "right_front"
+      ],
+      "navigation_backend": "http"
+    },
+    "small_a": {
+      "envelope": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "own_filter": [
+        0.7,
+        0.3,
+        0.25
+      ],
+      "peer_filter": [
+        0.8,
+        0.4,
+        0.3
+      ],
+      "navigation_backend": "ros1",
+      "inflate": 0.4
+    },
+    "small_b": {
+      "envelope": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "own_filter": [
+        0.7,
+        0.3,
+        0.25
+      ],
+      "peer_filter": [
+        0.8,
+        0.4,
+        0.3
+      ],
+      "lidar_height": 0.32
+    }
+  }
+}
