@@ -28,7 +28,7 @@ authors:
     given-names: "Yang"
     affiliation: "School of Intelligence Science and Technology, Nanjing University"
 version: "1.0.0"
-date-released: "2026-10-13"
+date-released: "2026-10-15"
 license: CC-BY-NC-SA-4.0
 repository-code: "https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code"
 url: "https://robo-lavira.github.io/hm3d-m3/"
