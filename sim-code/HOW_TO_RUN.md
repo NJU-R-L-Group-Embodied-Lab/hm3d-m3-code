@@ -77,8 +77,8 @@ Data is distributed separately from the code. It is CC BY-NC 4.0 and HM3D's term
 | --- | --- | --- |
 | Val (1,000 episodes) | episodes + IIN images `stretch512` and `stretch_v2` | GitHub Releases: `https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0` |
 | Mini-100 | episodes + IIN images `stretch512` | GitHub Releases: `https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0` |
-| Train | train episodes + IIN images `stretch512` | Hugging Face: `https://huggingface.co/datasets/NJU-R-L-Group-Embodied-Lab/HM3D-M3` |
-| Teacher samples (100K) | observation–assignment samples | Hugging Face: `https://huggingface.co/datasets/NJU-R-L-Group-Embodied-Lab/HM3D-M3` |
+| Train | train episodes + IIN images `stretch512` | Hugging Face: `https://huggingface.co/datasets/skyhyding/HM3D-M3` |
+| Teacher samples (100K) | observation–assignment samples | Hugging Face: `https://huggingface.co/datasets/skyhyding/HM3D-M3` |
 
 Get HM3D v0.2 (val split, with semantics) from Matterport under the HM3D license.
 

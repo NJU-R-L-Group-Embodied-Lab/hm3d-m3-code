@@ -40,7 +40,7 @@ Part 2. Data
 ========================================================================
 
 The HM3D-M3 data packages are distributed outside this code repository
-(GitHub release: https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0; Hugging Face dataset: https://huggingface.co/datasets/NJU-R-L-Group-Embodied-Lab/HM3D-M3).
+(GitHub release: https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0; Hugging Face dataset: https://huggingface.co/datasets/skyhyding/HM3D-M3).
 
 2.1 HM3D-M3 annotations: CC BY-NC 4.0.
     Episode files (Val, Mini-100, Train): agent start poses, goal sets, goal

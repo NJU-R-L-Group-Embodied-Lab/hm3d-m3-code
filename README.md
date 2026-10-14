@@ -1,6 +1,6 @@
 # HM3D-M³: A benchmark for multi-agent, multi-modal, multi-object goal navigation
 
-[Project page](https://robo-lavira.github.io/hm3d-m3/) · [Code](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code) · [Episodes (GitHub Releases)](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0) · [Training data (Hugging Face)](https://huggingface.co/datasets/NJU-R-L-Group-Embodied-Lab/HM3D-M3)
+[Project page](https://robo-lavira.github.io/hm3d-m3/) · [Code](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code) · [Episodes (GitHub Releases)](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0) · [Training data (Hugging Face)](https://huggingface.co/datasets/skyhyding/HM3D-M3)
 
 ![HM3D-M³ teaser](assets/teaser.jpg)
 
@@ -38,7 +38,7 @@ learning team coordination.
 | Package | Where |
 | --- | --- |
 | Val and Mini-100 episodes + IIN goal images | [GitHub Releases](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0) |
-| Train episodes + IIN goal images + 100K observation–assignment samples | [Hugging Face](https://huggingface.co/datasets/NJU-R-L-Group-Embodied-Lab/HM3D-M3) |
+| Train episodes + IIN goal images + 100K observation–assignment samples | [Hugging Face](https://huggingface.co/datasets/skyhyding/HM3D-M3) |
 
 `bash sim-code/download_data.sh` downloads, verifies and installs the episodes
 (`--train` / `--teacher` add the Hugging Face parts; options in
