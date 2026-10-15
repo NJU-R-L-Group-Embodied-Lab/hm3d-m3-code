@@ -1,6 +1,6 @@
 # HM3D-M³: A benchmark for multi-agent, multi-modal, multi-object goal navigation
 
-[Project page](https://robo-lavira.github.io/hm3d-m3/) · [Code](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code) · [Episodes (GitHub Releases)](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0) · [Training data (Hugging Face)](https://huggingface.co/datasets/skyhyding/HM3D-M3)
+[Project page](https://robo-lavira.github.io/hm3d-m3/) · [Paper (arXiv)](https://arxiv.org/abs/2610.20121) · [Code](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code) · [Episodes (GitHub Releases)](https://github.com/NJU-R-L-Group-Embodied-Lab/hm3d-m3-code/releases/tag/v1.0.0) · [Training data (Hugging Face)](https://huggingface.co/datasets/skyhyding/HM3D-M3)
 
 ![HM3D-M³ teaser](assets/teaser.jpg)
 
@@ -114,10 +114,13 @@ across them.
 
 ```bibtex
 @misc{hm3dm3,
-  title  = {HM3D-M$^3$: A Benchmark for Multi-Agent, Multi-Modal, Multi-Object Goal Navigation},
-  author = {Ding, Hongyu and Xu, Kanyu and Chen, Mingjia and Chen, Zixuan and Shi, Jieqi and Huo, Jing and Zhang, Yifan and Gao, Yang},
-  year   = {2026},
-  note   = {Under review}
+  title         = {HM3D-M$^3$: A Benchmark for Multi-Agent, Multi-Modal, Multi-Object Goal Navigation},
+  author        = {Ding, Hongyu and Xu, Kanyu and Chen, Mingjia and Chen, Zixuan and Shi, Jieqi and Huo, Jing and Zhang, Yifan and Gao, Yang},
+  year          = {2026},
+  eprint        = {2610.20121},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2610.20121}
 }
 ```
 
